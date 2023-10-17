@@ -1,0 +1,66 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 25px 0px;
+    background-color: #0069d6;
+}
+.underline-dv{
+    width: 100px;
+    height: 2px;
+    background-color: #ffa500;
+    margin: 10px auto;
+}
+.heading{
+    text-align: center;
+    margin-bottom: 30px;
+}
+h2{
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #ffffff;
+}
+#contact-form{
+    font-size: 20px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    /* margin: 0px auto; */
+
+}
+.blue{
+    color: #0069d6;
+}
+.form-control{
+    height: 50px;
+    font-size: 18px;
+}
+.comments{
+    font-size: 18px;
+    font-style: italic;
+    color: #d82c2e;
+    height: 25px; 
+}
+#contact-form input[type=submit]{
+    margin: 20px auto 0px;
+    display: block;
+}
+.btn1{
+    border: 1px solid #dddb;
+    background-color: #ffa500;
+    color: #fff;
+    width: 100%;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 18px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in 0s;
+}
+.btn1:hover{
+    background-color: #333;
+    border: #ffa500;
+}
+.thank-you{
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
