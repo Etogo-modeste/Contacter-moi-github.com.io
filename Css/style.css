@@ -24,17 +24,16 @@ h2{
     padding: 40px;
     border-radius: 10px;
     /* margin: 0px auto; */
-
 }
 .blue{
     color: #0069d6;
 }
-.form-control{
+/* .form-control{
     height: 50px;
     font-size: 18px;
-}
+} */
 .comments{
-    font-size: 18px;
+    font-size: 8px;
     font-style: italic;
     color: #d82c2e;
     height: 25px; 

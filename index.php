@@ -5,6 +5,8 @@
 
     $isSucess = false;
 
+    $emailTo = "";
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $firstname = verifyInput($_POST['firstname']);
         $name = verifyInput($_POST['name']);
@@ -12,36 +14,56 @@
         $telephone = verifyInput($_POST['telephone']);
         $message = verifyInput($_POST['message']);
         $isSucess = true;
+        $emailText ="modesteetogo1@gmail.com";
 
 
         if(empty($firstname)){
             $firstnameError = 'Veuillez renseigner votre prénom';
             $isSucess = false;
         }
+        else
+            $emailText .= "Prénom : $firstname\n";
         if(empty($name)){
             $nameError = 'Veuillez renseigner votre nom';
             $isSucess = false;
         }
+        else
+            $emailText .= "Nom : $name\n";
         if(empty($email)){
             $emailError = 'Veuillez renseigner votre email';
             $isSucess = false;
         }
-        if(empty($telephone)){
-            $telephoneError = 'Veuillez renseigner votre Numero de téléphone';
-            $isSucess = false;
-        }
+        else
+            $emailText .= "Courriel : $email\n";
+        // if(empty($telephone)){
+        //     $telephoneError = 'Veuillez renseigner votre Numero de téléphone';
+        //     $isSucess = false;
+        // }
+        // else
+        //     $emailText .= "Mobile : $telephone\n";
         if(empty($message)){
             $messageError = 'Veuillez renseigner votre commentaire';
             $isSucess = false;
         }
+        else
+            $emailText .= "Commentaire : $message\n";
         if(!isEmail($email)){
             $emailError = "Entrer une email valide !";
             $isSucess = false;
         }
+        else
+             $emailText .= "Courriel : $email\n";
         if(!isPhone($telephone)){
             $telephoneError = "renseigner un mobile valide !";
             $isSucess = false;
         }
+        else
+            $emailText .= "Mobile : $telephone\n";
+        if($isSucess){
+            $headers = "From : $firstname $name <$email>\r\n Reply-To : $email"; 
+            mail($emailTo, "Vous avez reçu un nouveau message de votre site web.", $emailText, $headers);
+            $firstname = $name = $email = $telephone = $message = '';
+        }    
     }
 
     function isPhone($var){
@@ -68,7 +90,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" width="width=divice=width, initial=scale=1">
-        <title>Souscrire!</title>
+        <title>Contacter-moi.github.io</title>
         <link rel="stylesheet" href="assets/bootstrap.min.css">
         <link href="Css/style.css" rel="stylesheet">
     </head>
@@ -76,7 +98,7 @@
         <div class="container">
             <div class="underline-dv"></div>
             <div class="heading">
-                <h2>remplissez vos informations</h2>
+                <h2>contactez-moi</h2>
             </div>
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
@@ -105,8 +127,7 @@
 
                             <div class="col-md-12">
                                 <label for="message">Message<span class="blue"> *</span></label>
-                                <textarea name="message" id="message" class="form-control" placeholder="
-                                Votre Commentaire"><?php echo $message;?></textarea>
+                                <textarea name="message" id="message" class="form-control" placeholder="Votre Commentaire" rows="3"><?php echo $message;?></textarea>
                                 <p class="comments"><?php echo $messageError; ?></p>
                             </div>
                             <div class="col-md-12">
